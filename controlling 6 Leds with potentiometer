@@ -1,0 +1,31 @@
+#define led1 3
+#define led2 5
+#define led3 6
+#define led4 9      //identifying the pins to which the leds are connected
+#define led5 10 
+#define led6 11
+
+#define pot A0
+
+int data=0;
+
+
+void setup() {
+ Serial.begin(9600);
+ Serial.println("pot value reading");
+}
+
+void loop() {
+  int data = analogRead(pot);
+ data = map(data, 0,1023,0,255);
+ analogWrite(led1,data);
+ analogWrite(led2,data);
+ analogWrite(led3,data);
+ analogWrite(led4,data);
+ analogWrite(led5,data);
+ analogWrite(led6,data);
+float Voltage = (5.00/1024.00)*data;
+Serial.println(Voltage);
+ 
+
+}
